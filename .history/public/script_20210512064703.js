@@ -1,6 +1,6 @@
 async function createTable(){
     const mealTable = await fetch("/api/meals");
-    const marcosTable = await fetch("/api/macros");
+    const marcosTable = await fetch("/api/marcos");
     const mealData = await mealTable.json();
     const marcosData = await marcosTable.json();
 
@@ -9,11 +9,11 @@ async function createTable(){
     info.push(marcosData);
     console.log(info);
 
-    const rows = [mealData, marcosData];
+    const rows = [diningData, marcosData];
     rows.forEach(() => {
         targetBox = document.querySelector('.tbl-body');
         const appendItem = document.createElement('tr');
-        for (j = 0; j < mealData.length; j+= 1) {
+        for (j = 0; j < diningData.length; j+= 1) {
             for (i = 0; i < marcosData.length; i += 1) {
                 appendItem.innerHTML = `
                 <td>$d{diningData[j].meal_id}</td>
@@ -35,4 +35,4 @@ async function windowOnload() {
     createTable();
   }
     
-window.onload = windowOnload;
+  window.onload = windowOnload;
